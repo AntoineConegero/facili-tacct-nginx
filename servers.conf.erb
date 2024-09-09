@@ -1,11 +1,1 @@
-http {
-   limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
 
-    server {
-        location / {
-             limit_req zone=one burst=5;
-             proxy_pass http://localhost:7777;
-             proxy_redirect default;
-        }
-    }
-}
