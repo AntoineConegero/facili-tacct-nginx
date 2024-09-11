@@ -9,7 +9,7 @@ http {
     server {
         location / {
              limit_req zone=one burst=5;
-             proxy_pass https://facili-tacct.osc-fr1.scalingo.io;
+             proxy_pass http://localhost:7777;
              proxy_redirect default;
         }
     }
