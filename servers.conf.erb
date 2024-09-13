@@ -2,8 +2,8 @@ limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
 
 server {
     server_name localhost;
-    access_log /logs/access.log;
-    error_log /logs/error.log;
+    access_log logs/access.log;
+    error_log logs/error.log;
     listen <%= ENV['PORT'] %>;
     charset utf-8;
     location / {
