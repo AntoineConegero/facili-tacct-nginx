@@ -1,14 +1,11 @@
-events {
-    worker_connections 4096;
-}
+limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
 
-http {
-    limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
-    server {
-        location / {
-            limit_req zone=one burst=5;
-            proxy_pass https://facili-tacct.osc-fr1.scalingo.io;
-            proxy_redirect default;
-        }
+server {
+    server_name localhost;
+    listen <%= ENV['PORT'] %>;
+    charset utf-8;
+    location / {
+        limit_req zone=one burst=5;
+        proxy_pass <%= ENV["PRODUCTION_SITE"] %>;
     }
 }
