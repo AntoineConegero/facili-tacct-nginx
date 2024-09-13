@@ -6,7 +6,7 @@ server {
     charset utf-8;
     location / {
         modsecurity on;
-        modsecurity_rules_file /secrules.conf;
+        modsecurity_rules_file secrules.conf;
         limit_req zone=one burst=5;
         proxy_pass <%= ENV["PRODUCTION_SITE"] %>;
     }
