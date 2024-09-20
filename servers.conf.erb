@@ -4,10 +4,10 @@ server {
     server_name facili-tacct.beta.gouv.fr;
     listen <%= ENV['PORT'] %>;
     charset utf-8;
+    modsecurity on;
     location / {
         proxy_pass <%= ENV['PRODUCTION_SITE'] %>;
         proxy_set_header Host facili-tacct.beta.gouv.fr;
-        modsecurity on;
         modsecurity_rules_file secrules.conf;
         limit_req zone=one burst=5;
     }
