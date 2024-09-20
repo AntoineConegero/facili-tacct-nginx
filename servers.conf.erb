@@ -1,4 +1,4 @@
-limit_req_zone $binary_remote_addr zone=one:10m rate=100r/s;
+limit_req_zone $binary_remote_addr zone=one:100m rate=100r/s;
 
 server {
     server_name localhost;
