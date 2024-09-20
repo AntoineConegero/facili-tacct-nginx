@@ -6,7 +6,7 @@ server {
     charset utf-8;
     modsecurity on;
     location / {
-        proxy_pass https://facili-tacct.osc-fr1.scalingo.io/;
+        proxy_pass <%= ENV['PRODUCTION_SITE'] %>;
         proxy_set_header Host facili-tacct.beta.gouv.fr;
         modsecurity_rules_file secrules.conf;
         limit_req zone=one burst=5;
