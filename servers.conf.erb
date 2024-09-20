@@ -6,6 +6,7 @@ server {
     charset utf-8;
     modsecurity on;
     location / {
+        modsecurity on;
         proxy_pass <%= ENV['PRODUCTION_SITE'] %>;
         #proxy_set_header Host https://facili-tacct.beta.gouv.fr;
         modsecurity_rules_file secrules.conf;
