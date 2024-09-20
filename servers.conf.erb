@@ -5,10 +5,10 @@ server {
     listen <%= ENV['PORT'] %>;
     charset utf-8;
     location / {
+        proxy_pass <%= ENV['PRODUCTION_SITE'] %>;
+        proxy_set_header Host facili-tacct.beta.gouv.fr;
         modsecurity on;
         modsecurity_rules_file secrules.conf;
         limit_req zone=one burst=5;
-        proxy_pass <%= ENV['PRODUCTION_SITE'] %>;
-        proxy_set_header Host $host;
     }
 }
