@@ -10,5 +10,6 @@ server {
         modsecurity_rules_file secrules.conf;
         limit_req zone=one burst=5;
         proxy_pass <%= ENV["PRODUCTION_SITE"] %>;
+        rewrite ^/facili-tacct.beta.gouv.fr break; 
     }
 }
