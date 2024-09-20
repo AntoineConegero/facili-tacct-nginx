@@ -1,7 +1,7 @@
 limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
 
 server {
-    server_name facili-tacct.beta.gouv.fr www.facili-tacct.beta.gouv.fr;
+    server_name facili-tacct.beta.gouv.fr;
     listen <%= ENV['PORT'] %>;
     charset utf-8;
     location / {
@@ -9,9 +9,6 @@ server {
         modsecurity_rules_file secrules.conf;
         limit_req zone=one burst=5;
         proxy_pass <%= ENV["PRODUCTION_SITE"] %>;
-        proxy_set_header     Host             facili-tacct.osc-fr1.scalingo.io;
-        proxy_set_header     X-Real-IP        facili-tacct.osc-fr1.scalingo.io;
-        proxy_set_header     X-Forwarded-For  facili-tacct.osc-fr1.scalingo.io;
-        proxy_set_header     X-Forwarded-Host facili-tacct.osc-fr1.scalingo.io;
+        proxy_set_header     Host             $host;
     }
 }
