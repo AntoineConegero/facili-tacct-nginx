@@ -9,6 +9,6 @@ server {
         modsecurity_rules_file secrules.conf;
         limit_req zone=one burst=5;
         proxy_pass <%= ENV['PRODUCTION_SITE'] %>;
-        proxy_redirect http://facili-tacct.osc-fr1.scalingo.io/ /facili-tacct.beta.gouv.fr/;
+        proxy_set_header Host $host;
     }
 }
