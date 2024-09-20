@@ -9,7 +9,7 @@ server {
         proxy_pass <%= ENV['PRODUCTION_SITE'] %>;
         modsecurity_rules_file secrules.conf;
         limit_req zone=one burst=5;
-        proxy_set_header      Host             "https://facili-tacct.beta.gouv.fr";
+        proxy_set_header      Host             $host;
         #proxy_set_header      Host             $http_host;
         #proxy_set_header     X-Forwarded-For  facili-tacct-nginx.osc-fr1.scalingo.io;
         #proxy_set_header     X-Forwarded-Host facili-tacct-nginx.osc-fr1.scalingo.io;
