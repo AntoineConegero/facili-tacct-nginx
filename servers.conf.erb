@@ -1,7 +1,7 @@
 limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
 
 server {
-    server_name facili-tacct.osc-fr1.scalingo.io;
+    server_name _;
     return 301 $scheme://facili-tacct.beta.gouv.fr$request_uri;
     listen <%= ENV['PORT'] %>;
     charset utf-8;
