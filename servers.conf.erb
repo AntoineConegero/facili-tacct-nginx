@@ -1,4 +1,4 @@
-limit_req_zone $binary_remote_addr zone=one:10m rate=5r/s;
+limit_req_zone $binary_remote_addr zone=one:10m rate=20r/s;
 
 server {
     server_name localhost;
@@ -8,6 +8,6 @@ server {
     location / {
         proxy_pass <%= ENV['PRODUCTION_SITE'] %>;
         modsecurity_rules_file secrules.conf;
-        limit_req zone=one burst=20 nodelay;
+        limit_req zone=one burst=40 nodelay;
     }
 }
