@@ -8,6 +8,6 @@ server {
     location / {
         proxy_pass <%= ENV['PRODUCTION_SITE'] %>;
         modsecurity_rules_file secrules.conf;
-        limit_req zone=one burst=20;
+        limit_req zone=one burst=20 nodelay;
     }
 }
